@@ -16,3 +16,9 @@
     src: ~/workspace/dotfiles/.hyper.js
     dest: ~/.hyper.js
     state: link
+
+- name: Create .config symlink
+  file:
+    src: ~/workspace/dotfiles/.config
+    dest: ~/.config
+    state: link
