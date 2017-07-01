@@ -1,0 +1,209 @@
+---
+
+#
+# See also
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+#
+
+#
+# Finder
+#
+
+# ファインダーで新しいウィンドウを開いた際に / を表示する
+- name: Set finder new window target
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: PfVo
+
+- name: Set finder new window target path
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: file:///
+    
+# 外部HDDをファインダーに表示する
+- name: Show external hard drives
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+
+# 拡張子を常に表示する
+# http://fnwiya.hatenablog.com/entry/2015/11/06/155255
+- name: Always show file extension
+  osx_defaults:
+    domain: -g
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  
+# メニューバー等の半透明を無効化
+- name: Disable transparency in menu bar
+  osx_defaults:
+    domain: com.apple.universalaccess
+    key: reduceTransparency
+    type: bool
+    value: true
+
+# インフォウィンドウを開く際のアニメーションをなくす
+- name: Disable window animations and Get Info animations
+  osx_defaults:
+    domain: com.apple.finder
+    key: DisableAllAnimations
+    type: bool
+    value: true
+
+# 検索のデフォルトを現在のディレクトリにする
+- name: When performing a search, search the current folder by default
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXDefaultSearchScope
+    type: string
+    value: SCcf
+
+# ネットワークドライブ上で.DS_Storeの作成を防ぐ
+- name: Avoid creating .DS_Store files on network
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+
+# USBドライブ上で.DS_Storeの作成を防ぐ
+- name: Avoid creating .DS_Store files on USB volumes
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteUSBStores
+    type: bool
+    value: true
+
+#
+# Dock
+#
+
+# ドックを自動的に隠す
+- name: Auto hide dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+
+# ドックアイコンサイズの変更
+- name: Large dock icon size
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 110
+
+# 全てのdockアイコンの削除
+- name: Wipe all default app icons from dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: persistent-apps
+    type: array
+    value: []
+
+#
+# System Preference
+#
+
+# フルキーボードアクセスを有効化する
+- name: Enable full keyboard access
+  osx_defaults:
+    domain: -g
+    key: AppleKeyboardUIMode
+    type: int
+    value: 2
+
+# トラックパッドのスピード設定
+- name: Set trackpad speed
+  osx_defaults:
+    domain: -g
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 2.0
+
+# ダークテーマを利用する
+- name: Use dark theme
+  osx_defaults:
+    domain: -g
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+
+# ズーム設定
+- name: Use scroll gesture with Ctrl modifier key to zoom
+  osx_defaults:
+    domain: com.apple.universalaccess
+    key: closeViewScrollWheelToggle
+    type: bool
+    value: true
+
+- name: Use scroll gesture with Ctrl modifier key to zoom
+  osx_defaults:
+    domain: com.apple.universalaccess
+    key: HIDScrollZoomModifierMask
+    type: int
+    value: 262144
+
+- name: Use scroll gesture with Ctrl modifier key to zoom
+  osx_defaults:
+    domain: com.apple.universalaccess
+    key: closeViewZoomFollowsFocus
+    type: bool
+    value: true
+
+# スクリーンショットから影を消す
+- name: Disable shadow in screenshot
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: disable-shadow
+    type: bool
+    value: true
+
+#
+# Safari
+#
+
+# 開発メニューを利用する
+- name: Enable develop menu and Web Inspector
+  osx_defaults:
+    domain: com.apple.Safari
+    key: com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
+    type: bool
+    value: true
+
+- name: Enable develop menu and Web Inspector
+  osx_defaults:
+    domain: com.apple.Safari
+    key: IncludeDevelopMenu
+    type: bool
+    value: true
+
+- name: Enable develop menu and Web Inspector
+  osx_defaults:
+    domain: com.apple.Safari
+    key: WebKitDeveloperExtrasEnabledPreferenceKey
+    type: bool
+    value: true
+
+# 検索クエリをAppleに送らない
+- name: Don’t send search queries to Apple
+  osx_defaults:
+    domain: com.apple.Safari
+    key: UniversalSearchEnabled
+    type: bool
+    value: false
+    
+- name: Don’t send search queries to Apple
+  osx_defaults:
+    domain: com.apple.Safari
+    key: SuppressSearchSuggestions
+    type: bool
+    value: true

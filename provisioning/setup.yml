@@ -1,0 +1,11 @@
+---
+
+- name: My mac provisioning
+  hosts: local
+  connection: local
+  roles:
+    - defaults
+    - basics
+    - nodejs
+    - applications
+    - dotfiles
