@@ -1,5 +1,8 @@
 #!/bin/bash -eu
 
+# Install zinit
+sh -c "$(curl -fsSL https://git.io/zinit-install)"
+
 # Setup shell
 ln -s ~/workspace/mac-provisioning/assets/shell/.zshrc ~/.zshrc
 touch ~/.zprofile
@@ -10,6 +13,10 @@ if [ ! -e $(which brew) ]; then
 else
     echo "brew already installed"
 fi
+
+# kokode ikkai tomerubeki
+
+brew update
 
 
 #
@@ -36,6 +43,7 @@ fi
 #
 # pyenv
 if [ ! -e $(which pyenv) ]; then
+    brew install pyenv
     {
         echo ''
         echo '# pyenv'
@@ -44,6 +52,7 @@ if [ ! -e $(which pyenv) ]; then
         echo 'eval "$(pyenv init --path)"'
         echo 'eval "$(pyenv virtualenv-init -)"'
     } >> ~/.zprofile
+    source ~/.zprofile
     pyenv install 3.8.12
     pyenv global 3.8.12
 else
@@ -53,11 +62,13 @@ fi
 #
 # pipenv
 if [ ! -e $(which pipenv) ]; then
+    brew install pipenv
     {
         echo ''
         echo '# Pipenv'
         echo 'export PIPENV_VENV_IN_PROJECT=1'
     } >> ~/.zprofile
+    source ~/.zprofile
 else
     echo "pipenv already installed"
 fi
@@ -156,13 +167,14 @@ if [ ! -e "/Applications/Hyper.app" ]; then
     brew install --cask hyper
     ln -s ~/workspace/mac-provisioning/assets/hyper/.hyper.js ~/.hyper.js
 else
-    echo "Raycast already installed"
+    echo "Hyper already installed"
 fi
 
 #
 # Karabiner-elements
 if [ ! -e "/Applications/Karabiner-Elements.app" ]; then
     brew install --cask karabiner-elements
+    ln -s ~/workspace/mac-provisioning/assets/karabiner-elements ~/.config/karabiner
 else
     echo "karabiner-elements already installed"
 fi
@@ -238,10 +250,37 @@ fi
 if [ ! -e "/Applications/zoom.us.app" ]; then
     brew install --cask zoom
 else
-    echo "Zoom Code already installed"
+    echo "Zoom already installed"
 fi
 
-
+#
 ## The Unarchiver
-brew install --cask the-unarchiver
+if [ ! -e "/Applications/The Unarchiver.app" ]; then
+    brew install --cask the-unarchiver
+else
+    echo "The Unarchiver already installed"
+fi
 
+#
+## TablePlus
+if [ ! -e "/Applications/TablePlus.app" ]; then
+    brew install --cask tableplus
+else
+    echo "TablePlus already installed"
+fi
+
+#
+## Paw
+if [ ! -e "/Applications/Paw.app" ]; then
+    brew install --cask paw
+else
+    echo "Paw already installed"
+fi
+
+#
+## Typora
+if [ ! -e "/Applications/Typora.app" ]; then
+    brew install --cask typora
+else
+    echo "Typora already installed"
+fi
