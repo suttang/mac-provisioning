@@ -47,7 +47,6 @@ compinit
 function _ssh { compadd `fgrep 'Host ' ~/.ssh/config | awk '{print $2}' | sort`; }
 
 ## git
-source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 autoload -Uz compinit && compinit
