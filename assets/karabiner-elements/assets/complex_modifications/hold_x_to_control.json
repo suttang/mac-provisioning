@@ -1,0 +1,38 @@
+{
+  "title": "Hold X to leftcontrol",
+  "rules": [
+    {
+      "description": "Hold X to left control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 100
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "lazy": true
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "x"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
