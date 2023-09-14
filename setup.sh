@@ -53,25 +53,23 @@ if [ ! -e $(which pyenv) ]; then
         echo 'eval "$(pyenv virtualenv-init -)"'
     } >> ~/.zprofile
     source ~/.zprofile
-    pyenv install 3.8.12
-    pyenv global 3.8.12
 else
     echo "pyenv already installed"
 fi
 
-#
+# IT NEEDS TO REPLACE WITH POETRY
 # pipenv
-if [ ! -e $(which pipenv) ]; then
-    brew install pipenv
-    {
-        echo ''
-        echo '# Pipenv'
-        echo 'export PIPENV_VENV_IN_PROJECT=1'
-    } >> ~/.zprofile
-    source ~/.zprofile
-else
-    echo "pipenv already installed"
-fi
+# if [ ! -e $(which pipenv) ]; then
+#     brew install pipenv
+#     {
+#         echo ''
+#         echo '# Pipenv'
+#         echo 'export PIPENV_VENV_IN_PROJECT=1'
+#     } >> ~/.zprofile
+#     source ~/.zprofile
+# else
+#     echo "pipenv already installed"
+# fi
 
 #
 # direnv
@@ -95,6 +93,7 @@ if [ ! -e $(which volta) ]; then
         echo 'export VOLTA_HOME="$HOME/.volta"'
         echo 'export PATH="$VOLTA_HOME/bin:$PATH"'
     } >> ~/.zprofile
+    source ~/.zprofile
 else
     echo "volta already installed"
 fi
@@ -204,14 +203,6 @@ else
 fi
 
 #
-# Netron
-if [ ! -e "/Applications/Netron.app" ]; then
-    brew install --cask netron
-else
-    echo "Netron already installed"
-fi
-
-#
 # Obsidian
 if [ ! -e "/Applications/Obsidian.app" ]; then
     brew install --cask obsidian
@@ -259,28 +250,4 @@ if [ ! -e "/Applications/The Unarchiver.app" ]; then
     brew install --cask the-unarchiver
 else
     echo "The Unarchiver already installed"
-fi
-
-#
-## TablePlus
-if [ ! -e "/Applications/TablePlus.app" ]; then
-    brew install --cask tableplus
-else
-    echo "TablePlus already installed"
-fi
-
-#
-## Paw
-if [ ! -e "/Applications/Paw.app" ]; then
-    brew install --cask paw
-else
-    echo "Paw already installed"
-fi
-
-#
-## Typora
-if [ ! -e "/Applications/Typora.app" ]; then
-    brew install --cask typora
-else
-    echo "Typora already installed"
 fi
