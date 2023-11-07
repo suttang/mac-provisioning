@@ -28,8 +28,6 @@ setopt print_eight_bit
 
 # Alias settings
 alias ll="ls -lG"
-# alias where="command -v"
-# alias su="su -l"
 
 # 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
@@ -79,6 +77,3 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"

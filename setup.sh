@@ -251,3 +251,35 @@ if [ ! -e "/Applications/The Unarchiver.app" ]; then
 else
     echo "The Unarchiver already installed"
 fi
+
+#
+## Docker
+if [ ! -e "/Applications/Docker.app" ]; then
+    brew install --cask docker
+else
+    echo "Docker already installed"
+fi
+
+#
+## Skitch
+if [ ! -e "/Applications/Skitch.app" ]; then
+    brew install --cask skitch
+else
+    echo "Skitch already installed"
+fi
+
+#
+## Hidden bar
+if [ ! -e "/Applications/Hidden bar.app" ]; then
+    brew install --cask hiddenbar
+else
+    echo "Hidden bar already installed"
+fi
+
+#
+## Todoist
+if [ ! -e "/Applications/Todoist.app" ]; then
+    brew install --cask todoist
+else
+    echo "Todoist already installed"
+fi

@@ -1,7 +1,0 @@
----
-
-- name: Copy private files
-  hosts: local
-  connection: local
-  roles:
-    - files
