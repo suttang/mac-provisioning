@@ -1,0 +1,32 @@
+# Interactive shell defaults.
+alias ll="ls -lG"
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+brew_prefix="${HOMEBREW_PREFIX:-/opt/homebrew}"
+
+if [[ -d "$brew_prefix/share/zsh-completions" ]]; then
+  FPATH="$brew_prefix/share/zsh-completions:$FPATH"
+fi
+if [[ -d "$brew_prefix/share/zsh/site-functions" ]]; then
+  FPATH="$brew_prefix/share/zsh/site-functions:$FPATH"
+fi
+autoload -Uz compinit
+compinit
+
+[[ -r "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+  source "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+if command -v starship >/dev/null 2>&1 && [[ "${TERM:-dumb}" != dumb ]]; then
+  eval "$(starship init zsh)"
+fi
+
+[[ -r "$HOME/.config/zsh/local.zsh" ]] && source "$HOME/.config/zsh/local.zsh"
+
+# Syntax highlighting must be loaded after other interactive shell setup.
+[[ -r "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+  source "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+unset brew_prefix

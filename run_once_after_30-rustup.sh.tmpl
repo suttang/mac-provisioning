@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if command -v rustup >/dev/null 2>&1; then
+  exit 0
+fi
+
+if ! command -v rustup-init >/dev/null 2>&1; then
+  echo "rustup-init was not installed by Homebrew Bundle." >&2
+  exit 1
+fi
+
+rustup-init -y --no-modify-path
