@@ -9,6 +9,7 @@
 | Node、Bun、Terraform、process-compose などの持ち運べる開発ランタイムと CLI | mise |
 | Python ランタイム、環境、Python ツール | uv |
 | Rust ツールチェーンとコンポーネント | rustup |
+| Gitへの秘密情報混入の検査 | Gitleaks（ローカル監査とGitHub Actions） |
 | 秘密情報、秘密鍵、ログインセッション、ライセンス | Bitwarden、キーチェーン、または手動設定 |
 | TCC 権限、Apple ID、FileVault、Touch ID | macOS の手動設定 |
 

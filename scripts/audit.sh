@@ -8,6 +8,53 @@ echo "== chezmoi source validation =="
 chezmoi --source "$repo_dir" execute-template < /dev/null >/dev/null
 chezmoi --source "$repo_dir" verify
 
+echo "== secret scan =="
+gitleaks dir --redact --no-banner --verbose "$repo_dir"
+gitleaks git --redact --no-banner --verbose --log-opts="--all" "$repo_dir"
+
+echo "== local secret permissions =="
+permission_error=0
+assert_owner_only() {
+  local path="$1"
+  local mode
+  mode="$(stat -f '%Lp' "$path")"
+  if (( (8#$mode & 077) != 0 )); then
+    echo "Sensitive path is accessible by group or other users: $mode $path" >&2
+    return 1
+  fi
+}
+
+for path in \
+  "$HOME/.config/zsh/local.zprofile" \
+  "$HOME/.aws/credentials" \
+  "$HOME/.config/sops/age/keys.txt"; do
+  [[ ! -e "$path" ]] || assert_owner_only "$path" || permission_error=1
+done
+
+for root in "$HOME/.ssh" "$HOME/.aws" "$HOME/.config/sops"; do
+  [[ ! -d "$root" ]] || while IFS= read -r -d '' path; do
+    assert_owner_only "$path" || permission_error=1
+  done < <(find "$root" -type d -print0)
+done
+
+if [[ -d "$HOME/.ssh" ]]; then
+  while IFS= read -r -d '' path; do
+    if LC_ALL=C grep -IqE '^-----BEGIN ([A-Z0-9]+ )?PRIVATE KEY-----$' "$path"; then
+      assert_owner_only "$path" || permission_error=1
+    fi
+  done < <(find "$HOME/.ssh" -type f -print0)
+fi
+
+if [[ -d "$HOME/.aws/cli/cache" ]]; then
+  while IFS= read -r -d '' path; do
+    assert_owner_only "$path" || permission_error=1
+  done < <(find "$HOME/.aws/cli/cache" -type f -print0)
+fi
+
+if (( permission_error != 0 )); then
+  exit 1
+fi
+
 echo "== Homebrew desired state =="
 brew bundle check --global --verbose --no-upgrade
 
