@@ -1,25 +1,25 @@
 # mac-provisioning
 
-Reproducible macOS configuration with a small, explicit ownership model:
+macOS の設定を、管理対象を明確に分けて再現するためのリポジトリです。
 
-- chezmoi manages dotfiles and stable application settings.
-- Homebrew Bundle manages packages and applications.
-- mise manages JavaScript runtimes and global JavaScript CLIs.
-- uv manages Python development environments and tools.
-- rustup manages Rust toolchains.
-- Security approvals, secrets, and account logins remain manual.
+- chezmoi: dotfiles と安定したアプリ設定
+- Homebrew Bundle: パッケージとアプリケーション
+- mise: JavaScript ランタイムとグローバル JavaScript CLI
+- uv: Python の開発環境とツール
+- rustup: Rust ツールチェーン
+- 手動設定: セキュリティ権限、秘密情報、アカウントへのログイン
 
-See `docs/ownership.md` for the complete boundary.
+詳しい管理境界は `docs/ownership.md` を参照してください。
 
-## Bootstrap a new Mac
+## 新しい Mac のセットアップ
 
-Install the Xcode Command Line Tools if necessary:
+必要に応じて Xcode Command Line Tools をインストールします。
 
 ```sh
 xcode-select --install
 ```
 
-Install Homebrew using its official installer, then install chezmoi:
+公式インストーラーで Homebrew を導入し、chezmoi をインストールします。
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -27,24 +27,24 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew install chezmoi
 ```
 
-Sign in to the Mac App Store, then initialize and apply this repository:
+Mac App Store にサインインした後、このリポジトリを初期化して適用します。
 
 ```sh
 chezmoi init --apply suttang/mac-provisioning
 ```
 
-Complete the remaining items in `docs/manual-steps.md`.
+最後に `docs/manual-steps.md` の手動作業を完了してください。
 
-## Daily use
+## 日常的な使い方
 
-Preview changes before applying them:
+適用前に変更内容を確認します。
 
 ```sh
 chezmoi diff
 chezmoi apply --dry-run --verbose
 ```
 
-Edit a managed file through chezmoi and apply it:
+chezmoi 経由で管理ファイルを編集し、適用します。
 
 ```sh
 chezmoi edit ~/.zshrc
@@ -52,32 +52,32 @@ chezmoi diff
 chezmoi apply
 ```
 
-Pull repository changes and preview the result:
+リポジトリの変更を取得して、適用内容を確認します。
 
 ```sh
 chezmoi git pull -- --autostash --rebase
 chezmoi diff
 ```
 
-Run the full local audit from the source repository:
+ソースリポジトリから全体監査を実行します。
 
 ```sh
 ./scripts/audit.sh
 ```
 
-## Package policy
+## パッケージ管理方針
 
-`~/.Brewfile` contains direct intent only. Transitive Homebrew dependencies are not copied into it. Applying the repository installs missing entries without upgrading everything and never removes unlisted software automatically.
+`~/.Brewfile` には、直接利用するパッケージだけを記載します。Homebrew が自動的に導入する依存パッケージは記載しません。リポジトリを適用すると不足項目だけがインストールされ、全パッケージの一括更新や未記載ソフトウェアの自動削除は行いません。
 
-To review possible drift:
+構成との差分候補は次のコマンドで確認できます。
 
 ```sh
 brew bundle check --global --verbose
 brew bundle cleanup --global
 ```
 
-The cleanup command above is a review step. Do not add `--force` until every proposed removal has been checked.
+`brew bundle cleanup` は確認専用です。削除候補を一つずつ確認するまで `--force` を付けないでください。
 
-## Secrets
+## 秘密情報
 
-This repository is public. Never add private SSH keys, AWS credentials, SOPS/age private keys, tokens, application databases, browser profiles, or exported login sessions.
+このリポジトリは公開されています。SSH 秘密鍵、AWS 認証情報、SOPS/age 秘密鍵、トークン、アプリケーションのデータベース、ブラウザープロファイル、ログインセッションのエクスポートは絶対に追加しないでください。

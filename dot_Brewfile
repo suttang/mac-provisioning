@@ -1,15 +1,15 @@
-# This file describes intent, not every transitive Homebrew dependency.
+# このファイルには、Homebrew の間接依存ではなく直接利用する項目だけを記載します。
 
 tap "barutsrb/tap", trusted: { casks: ["omniwm"] }
 
-# Environment management and bootstrap
+# 環境管理と初期セットアップ
 brew "chezmoi"
 brew "direnv"
 brew "mise"
 brew "rustup-init"
 brew "uv"
 
-# Shell and terminal
+# シェルとターミナル
 brew "asciinema"
 brew "mosh"
 brew "starship"
@@ -18,7 +18,7 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 
-# Core command-line tools
+# 基本的なコマンドラインツール
 brew "age"
 brew "bitwarden-cli"
 brew "dasel"
@@ -32,7 +32,7 @@ brew "sops"
 brew "tree"
 brew "wget"
 
-# Development toolchains
+# 開発ツールチェーン
 brew "actionlint"
 brew "agent-browser"
 brew "awscli"
@@ -46,13 +46,13 @@ brew "mkcert"
 brew "mysql"
 brew "openjdk@17"
 
-# Media, documents, and diagnostics
+# メディア、文書、診断
 brew "ffmpeg"
 brew "httperf"
 brew "poppler"
 brew "siege"
 
-# Homebrew-managed applications
+# Homebrew で管理するアプリ
 cask "bitwarden"
 cask "docker-desktop"
 cask "font-cica"
@@ -71,11 +71,10 @@ cask "session-manager-plugin"
 cask "slack"
 cask "tableplus"
 cask "the-unarchiver"
-cask "visual-studio-code"
 cask "zed"
 cask "zoom"
 
-# Mac App Store applications. Sign in to the App Store before first apply.
+# Mac App Store アプリ。初回適用前に App Store へサインインしてください。
 mas "Adblock Plus", id: 1432731683
 mas "CotEditor", id: 1024640650
 mas "iMovie", id: 408981434
@@ -92,27 +91,3 @@ mas "Tailscale", id: 1475387142
 mas "Todoist", id: 585829637
 mas "Toggl Track", id: 1291898086
 mas "Xcode", id: 497799835
-
-# Curated VS Code extensions. Dependencies are installed by VS Code itself.
-vscode "akamud.vscode-theme-onedark"
-vscode "biomejs.biome"
-vscode "bradlc.vscode-tailwindcss"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
-vscode "esbenp.prettier-vscode"
-vscode "github.vscode-github-actions"
-vscode "github.vscode-pull-request-github"
-vscode "ms-python.black-formatter"
-vscode "ms-python.debugpy"
-vscode "ms-python.flake8"
-vscode "ms-python.mypy-type-checker"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "prisma.prisma"
-vscode "redhat.vscode-yaml"
-vscode "streetsidesoftware.code-spell-checker"
-vscode "usernamehw.errorlens"
-vscode "yoavbls.pretty-ts-errors"

@@ -1,36 +1,36 @@
-# Manual steps
+# 手動で行う設定
 
-Some macOS state cannot be safely or reliably applied from a public Git repository.
+macOS の状態には、公開 Git リポジトリから安全かつ確実に適用できないものがあります。
 
-## Before the first apply
+## 初回適用前
 
-1. Install the Xcode Command Line Tools if Git is not available.
-2. Install Homebrew and chezmoi using the commands in `README.md`.
-3. Sign in to the Mac App Store before Homebrew Bundle installs `mas` entries.
+1. Git が利用できない場合は Xcode Command Line Tools をインストールします。
+2. `README.md` の手順に従って Homebrew と chezmoi をインストールします。
+3. Homebrew Bundle が `mas` の項目をインストールできるように、Mac App Store にサインインします。
 
-## Security and accounts
+## セキュリティとアカウント
 
-- Restore SSH private keys from a password manager or another encrypted backup. Never commit them here and do not synchronize the entire `~/.ssh` directory through iCloud Drive.
-- Create AWS profiles locally. Machine-specific shell values can be placed in `~/.config/zsh/local.zprofile`.
-- Restore the SOPS/age private key locally. Only public recipients may be committed.
-- Sign in to Bitwarden, browsers, developer tools, and communication applications manually.
+- SSH 秘密鍵は、パスワードマネージャーまたは暗号化したバックアップから復元します。このリポジトリには絶対にコミットせず、`~/.ssh` 全体を iCloud Drive で同期しないでください。
+- AWS プロファイルはローカルで作成します。Mac 固有のシェル設定は `~/.config/zsh/local.zprofile` に記載できます。
+- SOPS/age の秘密鍵はローカルに復元します。コミットできるのは公開 recipient だけです。
+- Bitwarden、ブラウザー、開発ツール、コミュニケーションアプリへのサインインは手動で行います。
 
-## macOS approvals
+## macOS の権限承認
 
-Approve permissions only when the corresponding application requests them:
+アプリから要求されたときだけ、対応する権限を承認します。
 
-- Karabiner-Elements: driver and Input Monitoring
-- OmniWM: Accessibility
-- Raycast: Accessibility and other explicitly used integrations
-- CleanShot X: Screen Recording
-- Docker Desktop: privileged helper and networking
-- Google Japanese Input: input source approval
+- Karabiner-Elements: ドライバーと入力監視
+- OmniWM: アクセシビリティ
+- Raycast: アクセシビリティと、実際に利用する連携機能
+- CleanShot X: 画面収録
+- Docker Desktop: 特権ヘルパーとネットワーク
+- Google 日本語入力: 入力ソースの承認
 
-Apple ID, FileVault, Touch ID, TCC permissions, application licenses, and browser sessions remain manual by design.
+Apple ID、FileVault、Touch ID、TCC 権限、アプリのライセンス、ブラウザーセッションは、設計上すべて手動管理です。
 
-## Applications currently installed outside Brewfile
+## Brewfile の管理外で現在インストールされているアプリ
 
-These applications are intentionally documented rather than silently adopted or reinstalled. On a new Mac, install only the ones still required; most have Homebrew casks and can be promoted to `dot_Brewfile` after review.
+次のアプリは、無断で管理対象に取り込んだり再インストールしたりせず、現状の記録だけを残しています。新しい Mac では、その時点で必要なものだけをインストールしてください。多くは Homebrew cask が提供されているため、内容を確認したうえで `dot_Brewfile` の管理対象に移せます。
 
 - Affinity
 - Android Studio
