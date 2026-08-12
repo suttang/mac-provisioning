@@ -1,0 +1,118 @@
+# This file describes intent, not every transitive Homebrew dependency.
+
+tap "barutsrb/tap", trusted: { casks: ["omniwm"] }
+
+# Environment management and bootstrap
+brew "chezmoi"
+brew "direnv"
+brew "mise"
+brew "rustup-init"
+brew "uv"
+
+# Shell and terminal
+brew "asciinema"
+brew "mosh"
+brew "starship"
+brew "zellij"
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+
+# Core command-line tools
+brew "age"
+brew "bitwarden-cli"
+brew "dasel"
+brew "gh"
+brew "jq"
+brew "just"
+brew "lazygit"
+brew "pwgen"
+brew "ripgrep"
+brew "sops"
+brew "tree"
+brew "wget"
+
+# Development toolchains
+brew "actionlint"
+brew "agent-browser"
+brew "awscli"
+brew "azure-cli"
+brew "bazelisk"
+brew "biome"
+brew "cmake"
+brew "go"
+brew "golang-migrate"
+brew "mkcert"
+brew "mysql"
+brew "openjdk@17"
+
+# Media, documents, and diagnostics
+brew "ffmpeg"
+brew "httperf"
+brew "poppler"
+brew "siege"
+
+# Homebrew-managed applications
+cask "bitwarden"
+cask "docker-desktop"
+cask "font-cica"
+cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "google-chrome"
+cask "google-japanese-ime"
+cask "karabiner-elements"
+cask "keka"
+cask "lunar"
+cask "ngrok"
+cask "obsidian"
+cask "barutsrb/tap/omniwm"
+cask "raycast"
+cask "session-manager-plugin"
+cask "slack"
+cask "tableplus"
+cask "the-unarchiver"
+cask "visual-studio-code"
+cask "zed"
+cask "zoom"
+
+# Mac App Store applications. Sign in to the App Store before first apply.
+mas "Adblock Plus", id: 1432731683
+mas "CotEditor", id: 1024640650
+mas "iMovie", id: 408981434
+mas "Kaleidoscope", id: 587512244
+mas "Keynote", id: 409183694
+mas "Keynote Creator Studio", id: 361285480
+mas "Klack", id: 6446206067
+mas "Numbers", id: 409203825
+mas "Numbers Creator Studio", id: 361304891
+mas "Pages", id: 409201541
+mas "Pages Creator Studio", id: 361309726
+mas "Session", id: 1521432881
+mas "Tailscale", id: 1475387142
+mas "Todoist", id: 585829637
+mas "Toggl Track", id: 1291898086
+mas "Xcode", id: 497799835
+
+# Curated VS Code extensions. Dependencies are installed by VS Code itself.
+vscode "akamud.vscode-theme-onedark"
+vscode "biomejs.biome"
+vscode "bradlc.vscode-tailwindcss"
+vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
+vscode "esbenp.prettier-vscode"
+vscode "github.vscode-github-actions"
+vscode "github.vscode-pull-request-github"
+vscode "ms-python.black-formatter"
+vscode "ms-python.debugpy"
+vscode "ms-python.flake8"
+vscode "ms-python.mypy-type-checker"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "prisma.prisma"
+vscode "redhat.vscode-yaml"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "usernamehw.errorlens"
+vscode "yoavbls.pretty-ts-errors"

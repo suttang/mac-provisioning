@@ -1,0 +1,35 @@
+# Homebrew must be available before tools managed by it are activated.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+export LANG=ja_JP.UTF-8
+
+typeset -U path PATH
+export GOPATH="$HOME/go-workspace"
+path=(
+  "$HOME/bin"
+  "$HOME/.local/bin"
+  "$HOME/.cargo/bin"
+  "$GOPATH/bin"
+  $path
+)
+
+if command -v brew >/dev/null 2>&1; then
+  java_home="$(brew --prefix openjdk@17 2>/dev/null || true)"
+  if [[ -n "$java_home" ]]; then
+    export JAVA_HOME="$java_home"
+    path=("$JAVA_HOME/bin" $path)
+  fi
+  unset java_home
+fi
+
+# Shims make mise-managed tools available to login shells and GUI-launched tools.
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh --shims)"
+fi
+
+# Machine-local values such as AWS_DEFAULT_PROFILE belong here, not in Git.
+[[ -r "$HOME/.config/zsh/local.zprofile" ]] && source "$HOME/.config/zsh/local.zprofile"

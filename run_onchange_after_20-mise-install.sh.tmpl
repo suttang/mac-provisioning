@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+# mise lock hash: {{ include "dot_config/mise/mise.lock" | sha256sum }}
+set -euo pipefail
+
+if ! command -v mise >/dev/null 2>&1; then
+  echo "mise was not installed by Homebrew Bundle." >&2
+  exit 1
+fi
+
+mise install
