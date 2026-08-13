@@ -11,6 +11,7 @@
 | Rust ツールチェーンとコンポーネント | rustup |
 | Gitへの秘密情報混入の検査 | Gitleaks（ローカル監査とGitHub Actions） |
 | 秘密情報、秘密鍵、ログインセッション、ライセンス | Bitwarden、キーチェーン、または手動設定 |
+| CodexのBitwarden接続方式 | chezmoi（公式MCPの固定版・ローカルCLIパスのみ。セッションと認証情報は管理しない） |
 | TCC 権限、Apple ID、FileVault、Touch ID | macOS の手動設定 |
 
 同じランタイムを複数の仕組みで重複管理しません。Homebrew の formula が内部利用するランタイムは Homebrew に残る場合がありますが、対話的な開発で使うランタイムとは分けて扱います。

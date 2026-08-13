@@ -68,6 +68,20 @@ mise install --dry-run-code || {
 }
 mise doctor
 
+echo "== Codex Bitwarden MCP =="
+bitwarden_mcp="$(codex mcp get bitwarden)"
+grep -Fq 'command: npx' <<<"$bitwarden_mcp"
+grep -Fq 'args: -y @bitwarden/mcp-server@2026.7.0' <<<"$bitwarden_mcp"
+grep -Fq 'BW_CLI_PATH = "/opt/homebrew/bin/bw"' "$HOME/.codex/config.toml"
+if grep -Eq '^[[:space:]]*BW_SESSION[[:space:]]*=' "$HOME/.codex/config.toml"; then
+  echo "BW_SESSION must not be persisted in the Codex configuration." >&2
+  exit 1
+fi
+if grep -q 'managed by hermes-agent' "$HOME/.codex/config.toml"; then
+  echo "Obsolete Hermes Agent ownership markers remain in the Codex configuration." >&2
+  exit 1
+fi
+
 echo "== package integrity =="
 brew missing
 

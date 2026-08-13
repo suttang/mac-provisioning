@@ -12,8 +12,10 @@ macOS の状態には、公開 Git リポジトリから安全かつ確実に適
 
 - SSH 秘密鍵は、パスワードマネージャーまたは暗号化したバックアップから復元します。このリポジトリには絶対にコミットせず、`~/.ssh` 全体を iCloud Drive で同期しないでください。`~/.ssh`は`700`、秘密鍵は`600`または`400`にします。
 - AWS プロファイルはローカルで作成します。`~/.aws`は`700`、credentialsは`600`にします。Mac固有のシェル設定は`~/.config/zsh/local.zprofile`に記載し、このファイルも`600`にします。
-- SOPS/age の秘密鍵はローカルに復元します。`~/.config/sops`以下のディレクトリは`700`、秘密鍵は`600`にします。コミットできるのは公開 recipient だけです。
 - Bitwarden、ブラウザー、開発ツール、コミュニケーションアプリへのサインインは手動で行います。
+- Bitwarden CLIは`bw login`で一度ログインします。ログイン後に表示される`BW_SESSION`は一時的なVault復号キーです。`.zshrc`、Codex設定、メモ、Gitへ保存せず、表示された`export BW_SESSION=...`も永続設定へ追加しません。
+- SOPS/age秘密鍵は、BitwardenのSecure Note `SOPS / age復号鍵 / personal-primary`から`~/.config/sops/age/keys.txt`へ復元します。`~/.config/sops`以下のディレクトリは`700`、`keys.txt`は`600`にします。コミットできるのは公開recipientだけです。
+- CodexからBitwardenを操作するときは、公式MCPのネイティブ解除ダイアログへ本人がマスターパスワードを入力します。秘密鍵本文や`BW_SESSION`を会話へ貼り付けません。操作後にVaultが`locked`であることを確認します。
 
 復元後に`./scripts/audit.sh`を実行し、Gitleaksを含む全監査が成功することを確認します。Gitleaksが秘密情報を検出した場合は、履歴から隠すだけでなく、先にその秘密情報を失効・再発行してください。
 

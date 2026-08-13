@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Bitwarden MCP config version: 2026.7.0-local-stdio-v1
+set -euo pipefail
+
+mcp_package="@bitwarden/mcp-server@2026.7.0"
+bw_path="/opt/homebrew/bin/bw"
+codex_config="$HOME/.codex/config.toml"
+
+if ! command -v codex >/dev/null 2>&1; then
+  echo "Codex was not installed by mise." >&2
+  exit 1
+fi
+
+if [[ ! -x "$bw_path" ]]; then
+  echo "Bitwarden CLI was not installed by Homebrew Bundle." >&2
+  exit 1
+fi
+
+if codex mcp get bitwarden >/dev/null 2>&1; then
+  current="$(codex mcp get bitwarden 2>/dev/null)"
+  if grep -Fq "args: -y $mcp_package" <<<"$current" \
+    && grep -Fq "BW_CLI_PATH = \"$bw_path\"" "$codex_config" \
+    && ! grep -Eq '^[[:space:]]*BW_SESSION[[:space:]]*=' "$codex_config"; then
+    exit 0
+  fi
+  codex mcp remove bitwarden
+fi
+
+codex mcp add bitwarden \
+  --env "BW_CLI_PATH=$bw_path" \
+  -- npx -y "$mcp_package"
