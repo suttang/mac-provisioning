@@ -55,6 +55,9 @@ if (( permission_error != 0 )); then
   exit 1
 fi
 
+echo "== age key backup inventory =="
+"$repo_dir/scripts/audit-age-keys.sh"
+
 echo "== Homebrew desired state =="
 brew bundle check --global --verbose --no-upgrade
 

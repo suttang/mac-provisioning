@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "keys": [
+    {
+      "path": "~/.config/sops/age/keys.txt",
+      "recipient": "age1xekxewdmwgaqhyes5qqj9yrlk0u0khr9jvl0q3qyyv7vu9k3e3lqrym03n",
+      "bitwardenItem": "SOPS / age復号鍵 / hataraku-ai-platform",
+      "scope": "hataraku-ai-platform",
+      "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/hataraku-ai.key",
+      "recipient": "age1wztqes4tc8ajhaqusksr6zl9e8eys3mtgc4kga8rh93y3dxd0ymqfl2sdx",
+      "bitwardenItem": "SOPS / age復号鍵 / hataraku-ai-shared",
+      "scope": "hataraku-ai-infra、hataraku-ai-workflow、旧Agent Platformの共有鍵",
+      "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/hataraku-ai-orbit.key",
+      "recipient": "age1qgwyyys08verfgelt4v3my86368lgclr9yf2tkn9rhjugxdc8qps2ymtwt",
+      "bitwardenItem": "SOPS / age復号鍵 / hataraku-ai-orbit",
+      "scope": "hataraku-ai-orbit",
+      "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/knowledge-base.key",
+      "recipient": "age1s3lkgeuf72mnd882g5py3xtuc95ukc5vlzv7sjrfj2hlxlv7jv2shtlkep",
+      "bitwardenItem": "SOPS / age復号鍵 / suttang-knowledge-base",
+      "scope": "suttang-knowledge-base",
+      "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/n8n-workflows.key",
+      "recipient": "age10udz3rlknkh6yl0y4h9qkuhqa6e55q465nw6m5vlktx8fss5zpqs0qmjy7",
+      "bitwardenItem": "SOPS / age復号鍵 / n8n-workflows",
+      "scope": "n8n-workflowsの暗号化コーパス",
+      "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/okaya-export-review-agent.key",
+      "recipient": "age1thygqh8kqm7h0xqm34lt8fetqvll04sl68ug2g9f5529hmaa3v4qhp9g7v",
+      "bitwardenItem": "SOPS / age復号鍵 / okaya-export-review-agent",
+      "scope": "okaya-export-review-agent",
+      "verifiedAt": "2026-08-13"
+    }
+  ]
+}

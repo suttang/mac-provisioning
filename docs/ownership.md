@@ -11,6 +11,7 @@
 | Rust ツールチェーンとコンポーネント | rustup |
 | Gitへの秘密情報混入の検査 | Gitleaks（ローカル監査とGitHub Actions） |
 | 秘密情報、秘密鍵、ログインセッション、ライセンス | Bitwarden、キーチェーン、または手動設定 |
+| age秘密鍵の公開台帳と未登録検知 | chezmoi（`age-key-inventory.json`とローカル監査。秘密鍵本文はBitwarden） |
 | CodexのBitwarden接続方式 | chezmoi（公式MCPの固定版・ローカルCLIパスのみ。セッションと認証情報は管理しない） |
 | TCC 権限、Apple ID、FileVault、Touch ID | macOS の手動設定 |
 
