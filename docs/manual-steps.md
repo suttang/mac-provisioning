@@ -24,7 +24,7 @@ macOS の状態には、公開 Git リポジトリから安全かつ確実に適
 アプリから要求されたときだけ、対応する権限を承認します。
 
 - Karabiner-Elements: ドライバーと入力監視
-- OmniWM: アクセシビリティ
+- Magnet: アクセシビリティ
 - Raycast: アクセシビリティと、実際に利用する連携機能
 - CleanShot X: 画面収録
 - Docker Desktop: 特権ヘルパーとネットワーク
