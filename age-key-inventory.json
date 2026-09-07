@@ -42,6 +42,13 @@
       "bitwardenItem": "SOPS / age復号鍵 / okaya-export-review-agent",
       "scope": "okaya-export-review-agent",
       "verifiedAt": "2026-08-13"
+    },
+    {
+      "path": "~/.config/age/hataraku-ai-studio.key",
+      "recipient": "age1lzzf223dq32xzm54zv3aeewdjc2jsrm0q3xcqshmmgnc5cmk3ffq2atg53",
+      "bitwardenItem": "SOPS / age復号鍵 / hataraku-ai-studio",
+      "scope": "hataraku-ai-studioのsecrets/local.enc.env",
+      "verifiedAt": "2026-09-07"
     }
   ]
 }
