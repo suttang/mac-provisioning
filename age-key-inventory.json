@@ -49,6 +49,13 @@
       "bitwardenItem": "SOPS / age復号鍵 / hataraku-ai-studio",
       "scope": "hataraku-ai-studioのsecrets/local.enc.env",
       "verifiedAt": "2026-09-07"
+    },
+    {
+      "path": "~/.config/age/personal-mail.key",
+      "recipient": "age1e6hrsptcs2vx63zjlecn4fhz7ckd9sapy0kr67uzj0ggzwwv730spf9v6u",
+      "bitwardenItem": "SOPS / age復号鍵 / personal-mail",
+      "scope": "personal-mail（個人 Gmail の OAuth クライアント JSON の暗号化）",
+      "verifiedAt": "2026-11-10"
     }
   ]
 }
